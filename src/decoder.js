@@ -1,10 +1,3 @@
-
-/**
- * Converts a hex string to a Uint8Array.
- * 
- * @param {string} hexString - The hex string to convert.
- * @returns {Uint8Array} - The resulting Uint8Array.
- */
 function hexStringToUint8Array(hexString) {
     var arr = [], i;
     for (i = 0; i < hexString.length; i += 2) {
@@ -13,12 +6,7 @@ function hexStringToUint8Array(hexString) {
     return new Uint8Array(arr);
 }
 
-/**
- * Gets the Acurite channel based on the high 2 bits of the input byte.
- * 
- * @param {number} byte - An 8-bit unsigned integer representing the byte.
- * @returns {string} - A string representing the channel.
- */
+
 function acuriteGetChannel(byte) {
     const channelStrs = ["C", "E", "B", "A"]; // 'E' stands for error
   
@@ -27,12 +15,6 @@ function acuriteGetChannel(byte) {
   }
 
   
-/**
- * Acurite Tower sensor decoder.
- * 
- * @param {string} hexString - A hex string representation of 7 bytes containing sensor data.
- * @returns {Object} - An object containing decoded sensor data.
- */
 function acuriteTowerDecode(bb) {
 
     // Initialize variables
@@ -154,12 +136,6 @@ function fineoffsetWH45Decode(bb) {
 }
 
 
-/**
- * Function to calculate the checksum by XORing all nibbles.
- * 
- * @param {Uint8Array} bytes - The byte array for which to calculate the checksum.
- * @returns {number} - The calculated checksum.
- */
 function calculateChecksum(bytes) {
     let checksum = 0;
     for (let i = 0; i < bytes.length; i++) {
@@ -174,26 +150,20 @@ function check_springfield_message_type(bb) {
     // Check bit length
         const bitLength = bb.length * 8;
         if (bitLength !== 36 && bitLength !== 37) {
-            console.log("Invalid bit length");
+            //console.log("Invalid bit length");
             return null;
         }
     
         // Validate checksum
         const calculatedChecksum = calculateChecksum(bb);
         if (calculatedChecksum !== 0) {
-            console.log("Checksum validation failed");
+            //console.log("Checksum validation failed");
             return null;
         }
 
         return SPRINGFIELD_MSGTYPE;
     }    
 
-/**
- * Springfield Soil Moisture sensor decoder.
- * 
- * @param {uint8} bb - A byte representation of the sensor data.
- * @returns {Object|null} - An object containing decoded sensor data or null if decoding fails.
- */
 function decodeSpringfield(bb) {
 
     // Proceed with decoding (assuming the rest of the decoding logic is implemented)
@@ -256,16 +226,37 @@ function Decoder(bb, port, uplink_info) {
     return decoded;
 }
 
-  
-// // // Example usage
-// //const hexString = "de7044af0a81cc";
-// //const hexString = "80002d980000950a764005bc0a003fff973a";
-// //const hexString = "45003fd102a2360040c04701a193ab";
-// const hexString = "93ab";
 
-// const bytes = hexStringToUint8Array(hexString);
+// for chripstack
+function decodeUplink(input) {
+    const decoded = Decoder(input.bytes, input.fPort, input.variables);
+    return { data: decoded };
+}
 
-// // Call Decoder function
-// const decodedData = Decoder(bytes, 1);  // Assuming port 1, you can change this as needed
-// console.log(decodedData);
-  
+function encodeDownlink(input) {
+    // Implement your downlink encoding logic here
+    return {
+        bytes: [225, 230, 255, 0]  // Example bytes
+    };
+}
+
+/*  
+// // Example usage
+const hexString = "de7044af0a81cc";
+//const hexString = "80002d980000950a764005bc0a003fff973a";
+//const hexString = "45003fd102a2360040c04701a193ab";
+//const hexString = "93ab";
+
+const bytes = hexStringToUint8Array(hexString);
+
+// Call Decoder function
+const decodedData = Decoder(bytes, 1);  // Assuming port 1, you can change this as needed
+console.log(decodedData);
+
+// Call Decoder function
+var input = [];
+input.bytes = bytes;
+input.fPort = 1;
+const decodedData2 = decodeUplink(input);  // Assuming port 1, you can change this as needed
+console.log(decodedData2);
+*/
