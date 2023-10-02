@@ -11,7 +11,8 @@ With a Helium Bridge device connecting to the Helium network,
   
 The Helium Bridge software and PCB design was sponsored by an innovation grant from the [Helium Foundation](https://www.helium.foundation/) to be made available open source. This work is freely available for use under its [MIT License](https://github.com/dirkbeer/Helium-Bridge/blob/main/LICENSE), copyright (c) 2023 Dirk Beer and [Gristle King, Inc](https://gristleking.com/). 
 
-![IMG_20230515_084035_603](https://github.com/dirkbeer/Helium-Bridge/assets/6425332/2ad90174-ed8f-40df-bdea-7423f9684e22)
+![image](https://github.com/dirkbeer/Helium-Bridge/assets/6425332/b7afec78-9378-4a55-8d24-4b64e4c9f2e4)
+
 
 The Arduino code builds on these outstanding projects:
 
