@@ -858,8 +858,7 @@ void processWork(ostime_t doWorkJobTimeStamp)
             payloadBuffer[1] = counterValue & 0xFF;
             uint8_t payloadLength = 2;
 
-            // scheduling uplinks based on an rtl_433_ESP callback for Helium Bridge //
-            // scheduleUplink(fPort, payloadBuffer, payloadLength);
+            scheduleUplink(fPort, payloadBuffer, payloadLength);
         }
     }
 }    
