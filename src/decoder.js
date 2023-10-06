@@ -149,7 +149,7 @@ function check_springfield_message_type(bb) {
 
     // Check bit length
         const bitLength = bb.length * 8;
-        if (bitLength !== 36 && bitLength !== 37) {
+        if (bitLength !== 32 ) {
             //console.log("Invalid bit length");
             return null;
         }
@@ -241,11 +241,11 @@ function encodeDownlink(input) {
 }
 
 /*  
-// // Example usage
-const hexString = "de7044af0a81cc";
+// Example usage
+//const hexString = "de7044af0a81cc";
 //const hexString = "80002d980000950a764005bc0a003fff973a";
 //const hexString = "45003fd102a2360040c04701a193ab";
-//const hexString = "93ab";
+const hexString = "c1211e01";
 
 const bytes = hexStringToUint8Array(hexString);
 
