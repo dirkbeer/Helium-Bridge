@@ -1002,7 +1002,7 @@ void setup()
   uint8_t demodModeCmd;
 
   EEPROM.begin(1);
-  
+  //EEPROM.write(DEMODMODECMD_ADDR, 0x00);
   demodModeCmd = EEPROM.read(DEMODMODECMD_ADDR);
   serial.print("demodModeCmd: ");
   serial.println(demodModeCmd);
