@@ -72,9 +72,9 @@ A version of this project with code specifically for the bridging the Ecowitt/Fi
 
 ## Using the device
 1. If desired, switch between 433MHz and 915MHz reception by sending a Downlink to the Device
-  * Downlink settings should be FPort: _100__
+  * Downlink settings should be FPort: _100_
   * On Helium Console, use payload type: _Text_. For 433MHz, send a `4`, for 915MHz, send a `9`
   * On Chirpstack Console, use payload type: _Hex_. For 433MHz, send a `34`, for 915MHz, send a `39`
 2. You will have to wait for an uplink to occur, and *it may take several tries* for the downlink to be received and acted on by the bridge.
-  * That's a limitation of LoRaWAN Class A devices like this one - they can only receive a downlink if they have autonomously sent an uplink. You can make sure that uplinks happen periodically using `DO_WORK_INTERVAL_SECONDS` in `platformio.ini`. This is a heartbeat interval to ensure you can get a downlink command to the device even it it's not receiving & bridging any sensor packets.
+  * A limitation of LoRaWAN Class A devices like this one is that they can only receive a downlink if they have autonomously sent an uplink. You can make sure that uplinks happen periodically using `DO_WORK_INTERVAL_SECONDS` in `platformio.ini`. This is a heartbeat interval to ensure you can get a downlink command to the device even it it's not receiving & bridging any sensor packets.
   * When you are successful, the downlink will restart the device and will see JOIN requests in Console. If there are supported sensors nearby on the frequency you've switched to, you will see their data come in.
