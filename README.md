@@ -39,9 +39,9 @@ A version of this project with code specifically for the bridging the Ecowitt/Fi
 ## Getting started
 # Build a Helium Bridge device
 1. Have the PCB printed: 
-  * Open the PCB design files in `/pcb/LoRaWan_Bridge_18650_CC1101SMD` using Kicad 7.0
-  * Export a Gerber zip file
-  * Order a PCB and solder mask from online services. We used OSH Park and OSH Stencils.
+  * Locate the Gerber file: `Helium-Bridge/pcb/LoRaWan_Bridge_18650_CC1101SMD-Gerber.zip`
+  * Order a PCB from an online service using the Gerber zip file. We used OSH Park.
+  * Order a solder mask from an online services. We used OSH Stencils. When you upload the Gerber zip file there, use the layer `lorawan_bridge_18650_cc1101smd_f_paste.gbr` for the stencil.
 2. In addition to the items listed above, you will need:
   * Solder paste and a method to reflow solder surface mount devices (SMDs). We used and highly recommend a DIY reflow oven like this: [link](https://whizoo.com/pages/buildguide).
   * 2.54mm pitch male and female straight single row pin headers for the Lilygo board, like the ones included in this kit [link](https://www.amazon.com/gp/product/B07CK3RCKS). You could also solder the board directly to the PCB, but it's very hard to unsolder if you run into problems.
